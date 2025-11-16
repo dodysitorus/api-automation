@@ -47,16 +47,16 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-results
-          path: ./allure-results
+          path: allure-results
 
       # Step 7: Generate Allure report
       - name: Generate Allure report
-        run: allure generate ./allure-results --clean
+        run: allure generate allure-results --clean
 
       # Step 8: Serve Allure report
       - name: Serve Allure report
-        run: allure open ./allure-report  # Open the generated Allure report in the GitHub runner
+        run: allure open allure-results  # Open the generated Allure report in the GitHub runner
 
       # Step 9: Clean up downloaded artifact (optional)
       - name: Clean up downloaded artifact
-        run: rm -rf ./allure-results  # Clean up the results folder after use
+        run: rm -rf allure-results  # Clean up the results folder after use
