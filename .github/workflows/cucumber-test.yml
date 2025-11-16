@@ -10,34 +10,34 @@ on:
 
 jobs:
   cucumber-test:
-    runs-on: ubuntu-latest  # Menjalankan job di runner Ubuntu
+    runs-on: ubuntu-latest  # Menjalankan workflow pada runner Ubuntu
 
     steps:
       # Langkah 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Langkah 2: Setup JDK (misalnya JDK 17)
+      # Langkah 2: Setup JDK 17 dengan AdoptOpenJDK
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
-          distribution: 'adoptopenjdk'  # Menambahkan distribusi JDK
+          java-version: '17'           # Menentukan versi JDK yang diinginkan
+          distribution: 'adoptopenjdk' # Menentukan distribusi JDK
           java-package: jdk
           architecture: x64
           check-latest: false
 
       # Langkah 3: Install dependencies menggunakan Maven
       - name: Install dependencies
-        run: mvn clean install -DskipTests  # Menginstal dependensi tanpa menjalankan tes
+        run: mvn clean install -DskipTests  # Install dependencies tanpa menjalankan tes
 
       # Langkah 4: Jalankan Cucumber tests menggunakan Maven
       - name: Run Cucumber tests
-        run: mvn test  # Jalankan tes menggunakan Maven
+        run: mvn test  # Jalankan semua tes, termasuk tes Cucumber
 
-      # Langkah 5: Upload laporan Cucumber (opsional)
+      # Langkah 5: Upload laporan Cucumber ke GitHub (opsional)
 #      - name: Upload Cucumber report to GitHub
 #        uses: actions/upload-artifact@v3
 #        with:
-#          name: cucumber-report  # Nama artefak
+#          name: cucumber-report
 #          path: target/cucumber-report.html  # Path ke laporan tes Cucumber
