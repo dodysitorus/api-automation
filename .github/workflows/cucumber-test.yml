@@ -36,8 +36,8 @@ jobs:
         run: mvn test  # Jalankan semua tes, termasuk tes Cucumber
 
       # Langkah 5: Upload laporan Cucumber ke GitHub (opsional)
-      - name: Upload Cucumber report to GitHub
+      - name: Upload Allure results
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report
-          path: target/cucumber-report.html  # Path ke laporan tes Cucumber
+          name: allure-report
+          path: target/allure-maven-plugin/ # Path ke laporan tes Cucumber
