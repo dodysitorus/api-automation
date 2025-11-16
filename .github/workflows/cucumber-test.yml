@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'           # Menentukan versi JDK yang diinginkan
-          distribution: 'temurin' # Menentukan distribusi JDK
+          distribution: 'adoptium' # Menentukan distribusi JDK
           java-package: jdk
           architecture: x64
           check-latest: false
