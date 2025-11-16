@@ -48,3 +48,15 @@ jobs:
         with:
           name: allure-report
           path: allure-results
+
+      # Langkah 7: Generate Allure report
+      - name: Generate Allure report
+        run: mvn allure:report
+
+      # Langkah 8: Serve Allure Report
+      - name: Serve Allure report
+        run: mvn allure:serve
+
+#        Langkah 9: Clean up downloaded artifact (optional)
+      - name : Clean up downloaded artifact
+        run: rm -rf ./allure-result
