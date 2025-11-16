@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: target/allure-maven-plugin/ # Path ke laporan tes Cucumber
+          path: allure-results # Path ke laporan tes Cucumber
