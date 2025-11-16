@@ -22,6 +22,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
+          distribution: 'adoptopenjdk'  # Menambahkan distribusi JDK
+          java-package: jdk
+          architecture: x64
+          check-latest: false
 
       # Langkah 3: Install dependencies menggunakan Maven
       - name: Install dependencies
