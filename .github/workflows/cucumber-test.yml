@@ -41,3 +41,10 @@ jobs:
         with:
           name: allure-report
           path: allure-results # Path ke laporan tes Cucumber
+
+      # Langkah 6: Download Allure results
+      - name: Download Allure results artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-report
+          path: allure-results
