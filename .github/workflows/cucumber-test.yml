@@ -32,8 +32,8 @@ jobs:
         run: mvn test  # Jalankan tes menggunakan Maven
 
       # Langkah 5: Upload laporan Cucumber (opsional)
-      - name: Upload Cucumber report to GitHub
-        uses: actions/upload-artifact@v3
-        with:
-          name: cucumber-report  # Nama artefak
-          path: target/cucumber-report.html  # Path ke laporan tes Cucumber
+#      - name: Upload Cucumber report to GitHub
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: cucumber-report  # Nama artefak
+#          path: target/cucumber-report.html  # Path ke laporan tes Cucumber
