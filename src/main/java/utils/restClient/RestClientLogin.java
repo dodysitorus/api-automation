@@ -18,7 +18,6 @@ public class RestClientLogin {
                 .body(LoginPayloadBuilder.loginPayload(login))
                 .post(baseUrl + endpoint)
                 .then()
-                .log().all()
                 .extract().response();
     }
 }

@@ -15,11 +15,11 @@ jobs:
     steps:
       # Langkah 1: Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Langkah 2: Setup JDK 11 dengan AdoptOpenJDK
       - name: Set up JDK 24
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           java-version: '24'           # Menentukan versi JDK yang diinginkan
           distribution: 'temurin' # Menentukan distribusi JDK
@@ -36,8 +36,8 @@ jobs:
         run: mvn test  # Jalankan semua tes, termasuk tes Cucumber
 
       # Langkah 5: Upload laporan Cucumber ke GitHub (opsional)
-#      - name: Upload Cucumber report to GitHub
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: cucumber-report
-#          path: target/cucumber-report.html  # Path ke laporan tes Cucumber
+      - name: Upload Cucumber report to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: target/cucumber-report.html  # Path ke laporan tes Cucumber
