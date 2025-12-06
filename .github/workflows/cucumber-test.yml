@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main  # Workflow dijalankan saat ada pull request ke branch 'main'
+  repository_dispatch:
+    types: [trigger-cucumber-tests]
 
 jobs:
   cucumber-test:
