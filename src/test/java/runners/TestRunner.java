@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = {"hook","stepDefinitions"},
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        tags = "@Regression"
+        tags = "@Regression1"
 )
 
 public class TestRunner {

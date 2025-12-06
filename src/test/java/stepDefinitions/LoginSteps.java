@@ -11,11 +11,6 @@ import static org.junit.Assert.*;
 public class LoginSteps {
     private Login login = new Login();
 
-    @Given("user prepare header request x-api-key {string}")
-    public void userPrepareHeaderRequestXApiKey(String x_api_key) {
-        login.setX_api_key(x_api_key);
-    }
-
     @Given("user prepare email login payload {string}")
     public void userPrepareEmailLoginPayload(String email) {
         login.setEmail(email);

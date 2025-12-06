@@ -17,4 +17,5 @@ public class ConfigReader {
     public static String getBaseUrl(){
         return prop.getProperty("base.url");
     }
+    public static String getSecretKey(){return prop.getProperty("base.secret_key");}
 }

@@ -7,16 +7,6 @@ public class Login {
     private String email;
     private String password;
 
-    public String getX_api_key() {
-        return x_api_key;
-    }
-
-    public void setX_api_key(String x_api_key) {
-        this.x_api_key = x_api_key;
-    }
-
-    private String x_api_key;
-
     public String getEmail() {
         return email;
     }
