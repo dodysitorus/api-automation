@@ -14,7 +14,6 @@ jobs:
   cucumber-test:
     runs-on: ubuntu-latest
 
-    # ... (Langkah 1 hingga 5 di atas tetap sama, tidak perlu diulang) ...
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,7 +31,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Run Cucumber tests
-        run: mvn test # ⚠️ Langkah ini akan menentukan keberhasilan job ini
+        run: mvn test
 
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
@@ -40,24 +39,21 @@ jobs:
           name: allure-report
           path: allure-results
 
-  # --- Job Baru: Pemicu Balik Deploy ---
+  # 🚨 JOB 2: Pemicu Balik Deploy (Hanya jika Job 1 Sukses dan dipicu oleh dispatch)
   deploy-web-if-success:
     runs-on: ubuntu-latest
     needs: cucumber-test # Job ini bergantung pada keberhasilan job 'cucumber-test'
 
-    # 🚨 Kondisi Kunci: Hanya jalankan job ini jika 'cucumber-test' sukses.
-    # Jika 'cucumber-test' gagal, job ini akan dilewati, dan deploy tidak akan terjadi.
+    # Kondisi Kunci: Sukses DAN pemicunya adalah 'repository_dispatch' (bukan push/pull_request internal)
     if: ${{ success() && github.event_name == 'repository_dispatch' }}
 
     steps:
       - name: Trigger Deploy in Web Statis Repo
-        # Pastikan Anda menggunakan PAT (secrets.GH_TOKEN) yang memiliki
-        # scope 'workflow' di repositori web statis
         uses: peter-evans/repository-dispatch@v3
         with:
-          # Ganti 'nama-akun/web-statis' dengan path yang benar
+          # Ganti dengan nama repository Web Statis Anda
           repository: dodysitorus/web-statis
-          token: ${{ secrets.GH_TOKEN }} # PAT Anda
-          # Gunakan event type yang disepakati untuk deploy
+          token: ${{ secrets.GH_TOKEN }} # PAT diperlukan
+          # Nama event harus sama dengan yang ditunggu oleh Job Deploy di repo web
           event-type: deploy-web-after-success
           client-payload: {}
